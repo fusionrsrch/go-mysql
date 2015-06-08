@@ -29,6 +29,7 @@ type Dumper struct {
 }
 
 func NewDumper(executionPath string, addr string, user string, password string) (*Dumper, error) {
+	fmt.Println(" NewDumper")
 	if len(executionPath) == 0 {
 		executionPath = "mysqldump"
 	}
@@ -53,14 +54,17 @@ func NewDumper(executionPath string, addr string, user string, password string) 
 }
 
 func (d *Dumper) SetErrOut(o io.Writer) {
+	fmt.Println(" SetErrOut")
 	d.ErrOut = o
 }
 
 func (d *Dumper) AddDatabases(dbs ...string) {
+	fmt.Println(" AddDatabases")
 	d.Databases = append(d.Databases, dbs...)
 }
 
 func (d *Dumper) AddTables(db string, tables ...string) {
+	fmt.Println(" AddTables")
 	if d.TableDB != db {
 		d.TableDB = db
 		d.Tables = d.Tables[0:0]
@@ -70,12 +74,14 @@ func (d *Dumper) AddTables(db string, tables ...string) {
 }
 
 func (d *Dumper) AddIgnoreTables(db string, tables ...string) {
+	fmt.Println(" AddIgnoreTables")
 	t, _ := d.IgnoreTables[db]
 	t = append(t, tables...)
 	d.IgnoreTables[db] = t
 }
 
 func (d *Dumper) Reset() {
+	fmt.Println(" Reset")
 	d.Tables = d.Tables[0:0]
 	d.TableDB = ""
 	d.IgnoreTables = make(map[string][]string)
@@ -83,6 +89,7 @@ func (d *Dumper) Reset() {
 }
 
 func (d *Dumper) Dump(w io.Writer) error {
+	fmt.Println(" Dump")
 	args := make([]string, 0, 16)
 
 	// Common args
@@ -141,6 +148,7 @@ func (d *Dumper) Dump(w io.Writer) error {
 
 // Dump MySQL and parse immediately
 func (d *Dumper) DumpAndParse(h ParseHandler) error {
+	fmt.Println(" DumpAndParse")
 	r, w := io.Pipe()
 
 	done := make(chan error, 1)

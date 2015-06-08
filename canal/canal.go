@@ -267,7 +267,7 @@ func (c *Canal) prepareSyncer() error {
 		return err
 	}
 
-	fmt.Println("MySQL: setup as slave with id", c.cfg.ServerID, " and master at", seps[0], "port", port, "and user", c.cfg.User)
+	fmt.Println("MySQL: setup as slave with id", c.cfg.ServerID, "and master at", seps[0], "port", port, "and user", c.cfg.User)
 
 	return nil
 }
