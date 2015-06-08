@@ -250,6 +250,7 @@ func (c *Canal) checkBinlogRowFormat() error {
 
 func (c *Canal) prepareSyncer() error {
 	fmt.Println(" prepareSyncer")
+
 	c.syncer = replication.NewBinlogSyncer(c.cfg.ServerID, c.cfg.Flavor)
 
 	seps := strings.Split(c.cfg.Addr, ":")
@@ -265,6 +266,9 @@ func (c *Canal) prepareSyncer() error {
 	if err = c.syncer.RegisterSlave(seps[0], uint16(port), c.cfg.User, c.cfg.Password); err != nil {
 		return err
 	}
+
+	fmt.Println("MySQL: setup as slave with id ", c.cfg.ServerID, " and master at ", seps[0], "port", port)
+
 	return nil
 }
 
