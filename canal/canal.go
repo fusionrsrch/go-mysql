@@ -218,8 +218,7 @@ func (c *Canal) CheckBinlogRowImage(image string) error {
 			rowImage, _ := res.GetString(0, 1)
 			if rowImage != "" && !strings.EqualFold(rowImage, image) {
 				return fmt.Errorf("MySQL uses %s binlog row image, but we want %s", rowImage, image)
-			}
-			else {
+			} else {
 				fmt.Println("MySQL 'binlog_row_image' set to %s", rowImage)
 			}
 		}
