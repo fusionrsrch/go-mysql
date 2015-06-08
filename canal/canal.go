@@ -50,6 +50,7 @@ type Canal struct {
 }
 
 func NewCanal(cfg *Config) (*Canal, error) {
+	fmt.Println(" NewCanal")
 	c := new(Canal)
 	c.cfg = cfg
 	c.closed.Set(false)
@@ -88,6 +89,7 @@ func NewCanal(cfg *Config) (*Canal, error) {
 }
 
 func (c *Canal) prepareDumper() error {
+	fmt.Println(" prepareDumper")
 	var err error
 	if c.dumper, err = dump.NewDumper(c.cfg.Dump.ExecutionPath,
 		c.cfg.Addr, c.cfg.User, c.cfg.Password); err != nil {
@@ -120,6 +122,7 @@ func (c *Canal) prepareDumper() error {
 }
 
 func (c *Canal) Start() error {
+	fmt.Println(" Start")
 	c.wg.Add(1)
 	go c.run()
 
@@ -127,6 +130,7 @@ func (c *Canal) Start() error {
 }
 
 func (c *Canal) run() error {
+	fmt.Println(" run")
 	defer c.wg.Done()
 
 	if err := c.tryDump(); err != nil {
@@ -147,10 +151,12 @@ func (c *Canal) run() error {
 }
 
 func (c *Canal) isClosed() bool {
+	fmt.Println(" isClosed")
 	return c.closed.Get()
 }
 
 func (c *Canal) Close() {
+	fmt.Println(" Close")
 	log.Infof("close canal")
 
 	c.m.Lock()
@@ -180,10 +186,12 @@ func (c *Canal) Close() {
 }
 
 func (c *Canal) WaitDumpDone() <-chan struct{} {
+	fmt.Println(" WaitDumpDone")
 	return c.dumpDoneCh
 }
 
 func (c *Canal) GetTable(db string, table string) (*schema.Table, error) {
+	fmt.Println(" GetTable")
 	key := fmt.Sprintf("%s.%s", db, table)
 	c.tableLock.Lock()
 	t, ok := c.tables[key]
@@ -219,7 +227,7 @@ func (c *Canal) CheckBinlogRowImage(image string) error {
 			if rowImage != "" && !strings.EqualFold(rowImage, image) {
 				return fmt.Errorf("MySQL uses %s binlog row image, but we want %s", rowImage, image)
 			} else {
-				fmt.Println("MySQL 'binlog_row_image' set to %s", rowImage)
+				fmt.Println("MySQL 'binlog_row_image' set to", rowImage)
 			}
 		}
 	}
@@ -241,6 +249,7 @@ func (c *Canal) checkBinlogRowFormat() error {
 }
 
 func (c *Canal) prepareSyncer() error {
+	fmt.Println(" prepareSyncer")
 	c.syncer = replication.NewBinlogSyncer(c.cfg.ServerID, c.cfg.Flavor)
 
 	seps := strings.Split(c.cfg.Addr, ":")
@@ -260,11 +269,13 @@ func (c *Canal) prepareSyncer() error {
 }
 
 func (c *Canal) masterInfoPath() string {
+	fmt.Println(" masterInfoPath")
 	return path.Join(c.cfg.DataDir, "master.info")
 }
 
 // Execute a SQL
 func (c *Canal) Execute(cmd string, args ...interface{}) (rr *mysql.Result, err error) {
+	fmt.Println(" Execute")
 	c.connLock.Lock()
 	defer c.connLock.Unlock()
 
@@ -292,5 +303,6 @@ func (c *Canal) Execute(cmd string, args ...interface{}) (rr *mysql.Result, err 
 }
 
 func (c *Canal) SyncedPosition() mysql.Position {
+	fmt.Println(" SyncedPosition")
 	return c.master.Pos()
 }
