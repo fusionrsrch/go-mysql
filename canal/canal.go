@@ -207,6 +207,7 @@ func (c *Canal) GetTable(db string, table string) (*schema.Table, error) {
 
 // Check MySQL binlog row image, must be in FULL, MINIMAL, NOBLOB
 func (c *Canal) CheckBinlogRowImage(image string) error {
+	fmt.Println(" CheckBinlogRowImage")
 	// need to check MySQL binlog row image? full, minimal or noblob?
 	// now only log
 	if c.cfg.Flavor == mysql.MySQLFlavor {
@@ -225,6 +226,7 @@ func (c *Canal) CheckBinlogRowImage(image string) error {
 }
 
 func (c *Canal) checkBinlogRowFormat() error {
+	fmt.Println(" checkBinlogRowFormat")
 	res, err := c.Execute(`SHOW GLOBAL VARIABLES LIKE "binlog_format";`)
 	if err != nil {
 		return err
