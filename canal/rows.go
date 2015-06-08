@@ -3,7 +3,7 @@ package canal
 import (
 	"fmt"
 
-	"github.com/siddontang/go-mysql/schema"
+	"github.com/fusionrsrch/go-mysql/schema"
 )
 
 const (

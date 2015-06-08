@@ -3,7 +3,7 @@ package failover
 import (
 	"fmt"
 
-	"github.com/siddontang/go-mysql/mysql"
+	"github.com/fusionrsrch/go-mysql/mysql"
 )
 
 // Failover will do below things after the master down

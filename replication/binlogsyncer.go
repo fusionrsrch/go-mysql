@@ -7,9 +7,9 @@ import (
 	"sync"
 	"time"
 
+	"github.com/fusionrsrch/go-mysql/client"
+	. "github.com/fusionrsrch/go-mysql/mysql"
 	"github.com/satori/go.uuid"
-	"github.com/siddontang/go-mysql/client"
-	. "github.com/siddontang/go-mysql/mysql"
 )
 
 var (

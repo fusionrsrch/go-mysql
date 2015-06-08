@@ -10,7 +10,7 @@ import (
 	"strconv"
 	"time"
 
-	. "github.com/siddontang/go-mysql/mysql"
+	. "github.com/fusionrsrch/go-mysql/mysql"
 	"github.com/siddontang/go/hack"
 )
 

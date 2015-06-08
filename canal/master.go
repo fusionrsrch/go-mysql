@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/BurntSushi/toml"
-	"github.com/siddontang/go-mysql/mysql"
+	"github.com/fusionrsrch/go-mysql/mysql"
 	"github.com/siddontang/go/ioutil2"
 	"github.com/siddontang/go/log"
 )

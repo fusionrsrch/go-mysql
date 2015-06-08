@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"math"
 
-	. "github.com/siddontang/go-mysql/mysql"
+	. "github.com/fusionrsrch/go-mysql/mysql"
 )
 
 type Stmt struct {

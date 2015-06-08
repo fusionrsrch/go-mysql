@@ -10,8 +10,8 @@ import (
 	"time"
 	"unicode"
 
+	. "github.com/fusionrsrch/go-mysql/mysql"
 	"github.com/satori/go.uuid"
-	. "github.com/siddontang/go-mysql/mysql"
 )
 
 const (
@@ -312,7 +312,7 @@ func (e *BeginLoadQueryEvent) Decode(data []byte) error {
 
 	e.BlockData = data[pos:]
 
-    return nil
+	return nil
 }
 
 func (e *BeginLoadQueryEvent) Dump(w io.Writer) {
@@ -362,7 +362,7 @@ func (e *ExecuteLoadQueryEvent) Decode(data []byte) error {
 
 	e.DupHandlingFlags = uint8(data[pos])
 
-    return nil
+	return nil
 }
 
 func (e *ExecuteLoadQueryEvent) Dump(w io.Writer) {

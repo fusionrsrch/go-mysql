@@ -8,7 +8,7 @@ import (
 	"bytes"
 	"testing"
 
-	"github.com/siddontang/go-mysql/client"
+	"github.com/siddontan/go-mysql/client"
 	. "gopkg.in/check.v1"
 )
 

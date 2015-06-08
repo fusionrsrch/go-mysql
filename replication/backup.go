@@ -7,7 +7,7 @@ import (
 	"path"
 	"time"
 
-	. "github.com/siddontang/go-mysql/mysql"
+	. "github.com/fusionrsrch/go-mysql/mysql"
 )
 
 // Like mysqlbinlog remote raw backup

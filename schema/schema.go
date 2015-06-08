@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/siddontang/go-mysql/mysql"
+	"github.com/fusionrsrch/go-mysql/mysql"
 )
 
 const (

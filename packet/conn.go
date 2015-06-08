@@ -7,7 +7,7 @@ import (
 	"io"
 	"net"
 
-	. "github.com/siddontang/go-mysql/mysql"
+	. "github.com/fusionrsrch/go-mysql/mysql"
 )
 
 /*

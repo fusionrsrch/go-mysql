@@ -4,8 +4,8 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/siddontang/go-mysql/dump"
-	"github.com/siddontang/go-mysql/schema"
+	"github.com/fusionrsrch/go-mysql/dump"
+	"github.com/fusionrsrch/go-mysql/schema"
 	"github.com/siddontang/go/log"
 )
 

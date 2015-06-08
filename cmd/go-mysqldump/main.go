@@ -6,7 +6,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/siddontang/go-mysql/dump"
+	"github.com/fusionrsrch/go-mysql/dump"
 )
 
 var addr = flag.String("addr", "127.0.0.1:3306", "MySQL addr")

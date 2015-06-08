@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/siddontang/go-mysql/mysql"
-	"github.com/siddontang/go-mysql/replication"
+	"github.com/fusionrsrch/go-mysql/mysql"
+	"github.com/fusionrsrch/go-mysql/replication"
 	"github.com/siddontang/go/log"
 )
 
