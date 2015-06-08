@@ -219,12 +219,16 @@ func (c *Canal) CheckBinlogRowImage(image string) error {
 			if rowImage != "" && !strings.EqualFold(rowImage, image) {
 				return fmt.Errorf("MySQL uses %s binlog row image, but we want %s", rowImage, image)
 			}
+			else {
+				fmt.Println("MySQL 'binlog_row_image' set to %s", rowImage)
+			}
 		}
 	}
 
 	return nil
 }
 
+// Check MySQL binlog_row_format is set to 'ROW'
 func (c *Canal) checkBinlogRowFormat() error {
 	fmt.Println(" checkBinlogRowFormat")
 	res, err := c.Execute(`SHOW GLOBAL VARIABLES LIKE "binlog_format";`)
