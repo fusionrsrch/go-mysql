@@ -123,7 +123,7 @@ func (c *Canal) prepareDumper() error {
 
 func (c *Canal) Start() error {
 	fmt.Println(" Start")
-	c.wg.Add(1)
+	//c.wg.Add(1)
 	//go c.run()
 	c.run()
 
@@ -162,8 +162,8 @@ func (c *Canal) Close() {
 	fmt.Println(" Close")
 	log.Infof("close canal")
 
-	c.m.Lock()
-	defer c.m.Unlock()
+	// c.m.Lock()
+	// defer c.m.Unlock()
 
 	if c.isClosed() {
 		return
@@ -185,7 +185,7 @@ func (c *Canal) Close() {
 
 	c.master.Close()
 
-	c.wg.Wait()
+	//c.wg.Wait()
 }
 
 func (c *Canal) WaitDumpDone() <-chan struct{} {
@@ -283,8 +283,8 @@ func (c *Canal) masterInfoPath() string {
 // Execute a SQL
 func (c *Canal) Execute(cmd string, args ...interface{}) (rr *mysql.Result, err error) {
 	fmt.Println(" Execute")
-	c.connLock.Lock()
-	defer c.connLock.Unlock()
+	// c.connLock.Lock()
+	// defer c.connLock.Unlock()
 
 	retryNum := 3
 	for i := 0; i < retryNum; i++ {
