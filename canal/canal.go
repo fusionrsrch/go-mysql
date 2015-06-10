@@ -124,7 +124,8 @@ func (c *Canal) prepareDumper() error {
 func (c *Canal) Start() error {
 	fmt.Println(" Start")
 	c.wg.Add(1)
-	go c.run()
+	//go c.run()
+	c.run()
 
 	return nil
 }
@@ -132,6 +133,8 @@ func (c *Canal) Start() error {
 func (c *Canal) run() error {
 	fmt.Println(" run")
 	defer c.wg.Done()
+
+	fmt.Println(" run222")
 
 	if err := c.tryDump(); err != nil {
 		log.Errorf("canal dump mysql err: %v", err)

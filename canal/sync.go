@@ -71,7 +71,7 @@ func (c *Canal) handleRowsEvent(e *replication.BinlogEvent) error {
 	if err != nil {
 		return err
 	}
-	var action string
+	//var action string
 	switch e.Header.EventType {
 	case replication.WRITE_ROWS_EVENTv1, replication.WRITE_ROWS_EVENTv2:
 		action = InsertAction

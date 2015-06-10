@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/siddontang/go-mysql/client"
+	"github.com/fusionrsrch/go-mysql/client"
 	. "gopkg.in/check.v1"
 )
 
