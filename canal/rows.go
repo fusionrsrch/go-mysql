@@ -36,6 +36,7 @@ func newRowsEvent(table *schema.Table, action string, rows [][]interface{}) *Row
 // Get primary keys in one row for a table, a table may use multi fields as the PK
 func GetPKValues(table *schema.Table, row []interface{}) ([]interface{}, error) {
 	indexes := table.PKColumns
+	fmt.Println(indexes)
 	if len(indexes) == 0 {
 		return nil, fmt.Errorf("table %s has no PK", table)
 	} else if len(table.Columns) != len(row) {
